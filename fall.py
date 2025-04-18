@@ -33,7 +33,7 @@ if section == "Data Exploration":
         st.write("Available Sheets:", excel_data.sheet_names)
 
         @st.cache_data
-        def load_and_clean_data(excel_file):
+        def load_and_clean_data(_excel_file):excel_file):
             data_in = excel_file.parse('Data In')
             data = data_in.iloc[3:, :13].copy()
             data.columns = data_in.iloc[2, :13].values
@@ -63,7 +63,7 @@ if section == "Data Exploration":
             df['FallDetected'] = df['Status'].str.contains('Fall', case=False, na=False).astype(int)
             return df
 
-        df = load_and_clean_data(excel_data)
+        df = load_and_clean_data(_excel_file=excel_data)
         st.subheader("Cleaned Dataset Preview")
         st.dataframe(df.head())
 
