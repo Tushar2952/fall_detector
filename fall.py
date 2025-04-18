@@ -103,13 +103,14 @@ elif section == "Model Comparison":
     y = df['Label']
     X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.3, random_state=42)
 
-    pipeline_rf = Pipeline([
+    from imblearn.pipeline import Pipeline as ImbPipeline
+    pipeline_rf = ImbPipeline([
         ('scaler', StandardScaler()),
         ('smote', SMOTE(random_state=42)),
         ('select', SelectKBest(score_func=f_classif, k='all')),
         ('clf', RandomForestClassifier(random_state=42))
     ])
-    pipeline_xgb = Pipeline([
+        pipeline_xgb = ImbPipeline([
         ('scaler', StandardScaler()),
         ('smote', SMOTE(random_state=42)),
         ('select', SelectKBest(score_func=f_classif, k='all')),
