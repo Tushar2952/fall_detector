@@ -34,7 +34,7 @@ if section == "Data Exploration":
 
         @st.cache_data
         def load_and_clean_data(_excel_file):
-            data_in = excel_file.parse('Data In')
+            data_in = _excel_file.parse('Data In')
             data = data_in.iloc[3:, :13].copy()
             data.columns = data_in.iloc[2, :13].values
             data = data[~data['TIME'].isin(['TIME', 'Historical Data'])]
