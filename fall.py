@@ -110,7 +110,7 @@ elif section == "Model Comparison":
         ('select', SelectKBest(score_func=f_classif, k='all')),
         ('clf', RandomForestClassifier(random_state=42))
     ])
-        pipeline_xgb = ImbPipeline([
+            pipeline_xgb = ImbPipeline([
         ('scaler', StandardScaler()),
         ('smote', SMOTE(random_state=42)),
         ('select', SelectKBest(score_func=f_classif, k='all')),
